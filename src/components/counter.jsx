@@ -3,6 +3,9 @@ import React, { Component } from "react"; // imported using imrc shortcut from s
 
 class Counter extends Component {
   // cc shortcut from simple react snippets Extension
+  /* State was commented out to make Counter a Controlled component (no local state). 
+    all its data is received via props from parent. Raises events when data needs to be changed
+
   state = {
     // state is a special object in components that hold any data the component needs
     // holds data local/private to this component
@@ -12,7 +15,7 @@ class Counter extends Component {
     value: this.props.counter.value,
     tags: [],
     // imageUrl: "https://picsum.photos/200",
-  };
+  }; */
 
   styles = {
     // object to hold 'css' style values. Values should be in camelcase notation
@@ -28,6 +31,7 @@ class Counter extends Component {
     // returns a new instance of handleIncrement function where <this> is referencing the current object
   } */
 
+  /*
   renderTags() {
     // conditional rendering
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
@@ -39,14 +43,7 @@ class Counter extends Component {
         ))}
       </ul>
     );
-  }
-
-  handleIncrement = (product) => {
-    // arrow function syntax to avoid having to use bind functions
-    // create function for each Event to be Handled
-    // event handlers don't have access to <this> using default syntax, need arrow syntax
-    this.setState({ value: this.state.value + 1 });
-  };
+  } */
 
   render() {
     return (
@@ -69,7 +66,7 @@ class Counter extends Component {
         {/* inline arrow functions to pass in arguemnts through event handlers */}
         <button
           style={{ fontSize: 20 }}
-          onClick={this.handleIncrement}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm"
         >
           Increment
@@ -92,12 +89,12 @@ class Counter extends Component {
   getBadgeClass() {
     // rendering classes dynamically
     let classes = "badge m-2 badge-"; // classes that all should possess
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { value: count } = this.state; // destructure the this.state object's count attribute
+    const { value: count } = this.props.counter; // destructure the this.state object's count attribute
     return count === 0 ? "ZERO" : count;
   }
 }
