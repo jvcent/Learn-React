@@ -5,6 +5,7 @@ import React, { Component } from "react";
 const NavBar = ({ totalCounters }) => {
   // always add props as parameter in func components
   // class components don't need parameter since they use <this> to specify
+  // life cycle hooks can only be used with class components
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="#">
