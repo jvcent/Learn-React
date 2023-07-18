@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 
-class NavBar extends Component {
-  // state not needed here
-  render() {
-    return (
-      <nav className="navbar navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-          Navbar{" "}
-          <span className="badge badge-pill badge-secondary">
-            {this.props.totalCounters}
-          </span>
-        </a>
-      </nav>
-    );
-  }
-}
+// Stateless functional component (sfc shortcut)
+// Using functions to define a component instead of a class
+const NavBar = ({ totalCounters }) => {
+  // always add props as parameter in func components
+  // class components don't need parameter since they use <this> to specify
+  return (
+    <nav className="navbar navbar-light bg-light">
+      <a className="navbar-brand" href="#">
+        Navbar{" "}
+        <span className="badge badge-pill badge-secondary">
+          {totalCounters}
+          {/*using curly braces in argument destructures it, no need for prop */}
+        </span>
+      </a>
+    </nav>
+  );
+};
 
 export default NavBar;
